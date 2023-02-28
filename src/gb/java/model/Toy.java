@@ -13,7 +13,12 @@ public class Toy implements Comparable<Toy> {
     public Toy(int id, String title, int priority) {
         this.id = id;
         this.title = title;
-        this.priority = priority;
+	if priority > 100 || priority < 1 {
+		System.out.println("Некорректное значение параметра 'priority'.\nУстановлено значение по-умолчанию: 50");
+		this.priority = 50
+	} else {
+		this.priority = priority;
+	}
     }
 
     public int getId() {
