@@ -19,19 +19,25 @@ public class Controller {
 	}
 	
 	if args.equals("--admin") {
+		
+		System.out.println("Вы находитесь в меню администратора.\nВыберите нужное действие.");
 		view[0].prizesListManager();
 		return;
 	}
 	
 	if args.equals("--gp") {
+		System.out.println("Выбрано действие, \"получить приз\"\nВаш приз:");
 		view[1].getPrize();
 		return;
 	}
 	
 	if args.equals("--pl") {
+		
+		System.out.println("Выбрано действие, \"Список всех призов\"");
 		view[1].showPrizesList();
+		return;
 	}
-	
+	System.out.println("ЛОТТЕРЕЯ ДЕТСКИХ ИГРУШЕК");
 	System.out.println("Вызов справки, введите аргумент: --help, -h");
     }
 }
