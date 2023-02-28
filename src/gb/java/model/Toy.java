@@ -13,9 +13,9 @@ public class Toy implements Comparable<Toy> {
     public Toy(int id, String title, int priority) {
         this.id = id;
         this.title = title;
-	if priority > 100 || priority < 1 {
+	if (priority > 100 || priority < 1) {
 		System.out.println("Некорректное значение параметра 'priority'.\nУстановлено значение по-умолчанию: 50");
-		this.priority = 50
+		this.priority = 50;
 	} else {
 		this.priority = priority;
 	}
@@ -31,6 +31,18 @@ public class Toy implements Comparable<Toy> {
 
     public int getPriority() {
         return priority;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     @Override
