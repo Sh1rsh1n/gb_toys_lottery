@@ -2,15 +2,21 @@ package services;
 
 import model.Toy;
 
+import java.util.List;
+
 
 public class AdminServices{
 
-   public void addPrize(Toy toy) {
+   public void addToy(Toy toy) {
       DataServices.writeData(toy, true);
    }
 
+   public List<Toy> getPrizesList() {
+      return DataServices.readData();
+   }
+
    public boolean checkPassword(String password) {
-      return false;
+      return password.equals("123456");
    }
 }
 

@@ -3,7 +3,7 @@ package controller;
 
 import view.AdminView;
 import view.BaseView;
-import view.PrizeView;
+import view.ConsumerView;
 
 public class Controller {
 
@@ -13,7 +13,7 @@ public class Controller {
 
     public Controller(String args) {
         this.args = args;
-        this.view = new BaseView[]{new AdminView(), new PrizeView()};
+        this.view = new BaseView[]{new AdminView(), new ConsumerView()};
     }
 
     public void appStart() {

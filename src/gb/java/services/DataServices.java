@@ -18,12 +18,12 @@ public class DataServices {
       */
     public static void writeData(Toy toy, boolean newLine) {
 
-        try (FileWriter writer = new FileWriter(path, newLine)) { // записываем данные в файл, с добавлением с новой строки
-            writer.write(toy.getId() + ","); // записываем имя
+        try (FileWriter writer = new FileWriter(path, newLine)) {
+            writer.write(toy.getId() + ",");
             writer.write(toy.getTitle() + ",");
+            writer.write(toy.getAmount() + ",");
             writer.write(toy.getPriority()); 
             writer.flush();
-            writer.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -44,7 +44,7 @@ public class DataServices {
 
                 String[] array = str.split(",");
 
-                Toy toy = new Toy(Integer.parseInt(array[0]), array[1], Integer.parseInt(array[2]));
+                Toy toy = new Toy(Integer.parseInt(array[0]), array[1], Integer.parseInt(array[2]), Integer.parseInt(array[3]));
                 list.add(toy);
             }
         } catch (IOException e) {

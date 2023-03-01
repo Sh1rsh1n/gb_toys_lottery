@@ -8,17 +8,20 @@ public class Toy implements Comparable<Toy> {
 
     private String title;
 
+    private int amount;
+
     private int priority;
 
-    public Toy(int id, String title, int priority) {
+    public Toy(int id, String title, int amoiunt, int priority) {
         this.id = id;
         this.title = title;
-	if (priority > 100 || priority < 1) {
-		System.out.println("Некорректное значение параметра 'priority'.\nУстановлено значение по-умолчанию: 50");
-		this.priority = 50;
-	} else {
-		this.priority = priority;
-	}
+        this.amount = amoiunt;
+        if (priority > 9 || priority < 1) {
+            System.out.println("Некорректное значение параметра 'priority'.\nУстановлено значение по-умолчанию: 5");
+            this.priority = 5;
+        } else {
+            this.priority = priority;
+        }
     }
 
     public int getId() {
@@ -45,6 +48,14 @@ public class Toy implements Comparable<Toy> {
         this.priority = priority;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,6 +64,7 @@ public class Toy implements Comparable<Toy> {
         Toy toy = (Toy) o;
 
         if (id != toy.id) return false;
+        if (amount != toy.amount) return false;
         if (priority != toy.priority) return false;
         return Objects.equals(title, toy.title);
     }
@@ -61,6 +73,7 @@ public class Toy implements Comparable<Toy> {
     public int hashCode() {
         int result = id;
         result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + amount;
         result = 31 * result + priority;
         return result;
     }
@@ -70,6 +83,7 @@ public class Toy implements Comparable<Toy> {
         return "Toy{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", amount=" + amount +
                 ", priority=" + priority +
                 '}';
     }
