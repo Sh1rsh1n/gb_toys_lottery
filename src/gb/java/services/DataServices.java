@@ -21,7 +21,7 @@ public class DataServices {
         try (FileWriter writer = new FileWriter(path, newLine)) { // записываем данные в файл, с добавлением с новой строки
             writer.write(toy.getId() + ","); // записываем имя
             writer.write(toy.getTitle() + ",");
-            writer.write(toy.getPriority());
+            writer.write(toy.getPriority()); 
             writer.flush();
             writer.close();
         } catch (IOException ex) {
