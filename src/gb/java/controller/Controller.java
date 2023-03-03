@@ -1,27 +1,14 @@
 package controller;
 
-
-import view.AdminView;
 import view.BaseView;
-import view.ConsumerView;
 
 public class Controller {
 
-    private BaseView[] view;
-
-    private String args;
-
-    public Controller(String args) {
-        this.args = args;
-        this.view = new BaseView[]{new AdminView(), new ConsumerView()};
-    }
-
-    public void appStart() {
+    public void appStart(BaseView[] view, String args) {
 
         if (this.args.equals("--help") || this.args.equals("-h")) {
-            System.out.println("\tAdmin menu:\n\t--admin: prizes manager (need enter admin password)");
-            System.out.println("\tConsumer menu:\n\t--gp: get prize");
-            System.out.println("\t--pl: prize list (chance to get prize, %)");
+            System.out.println("\tAdmin menu write argument:\n\t--admin: prizes manager (need enter admin password)");
+            System.out.println("\tConsumer menu, write argument:\n\t--wp: "want prize");
             return;
         }
 
@@ -30,7 +17,7 @@ public class Controller {
             return;
         }
 
-        if (this.args.equals("--gp")) {
+        if (this.args.equals("--wp")) {
             System.out.println("Action selected, \"Get prize\"\nYour prize is:");
             view[1].action();
             System.out.println("Congratulations!!!!");
