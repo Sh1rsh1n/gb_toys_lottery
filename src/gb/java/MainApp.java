@@ -1,4 +1,7 @@
 import controller.Controller;
+import view.AdminView;
+import view.BaseView;
+import view.ConsumerView;
 
 
 public class MainApp {

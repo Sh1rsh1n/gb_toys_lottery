@@ -18,6 +18,7 @@ public class AdminView implements BaseView {
 	@Override
 	public void action() {
 		System.out.println("Enter password: ");
+		Scanner scanner = new Scanner(System.in);
 		String password = scanner.nextLine();
 
 		while (adminServices.checkPassword(password)) {

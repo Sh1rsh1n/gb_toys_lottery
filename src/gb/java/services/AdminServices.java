@@ -3,13 +3,15 @@ package services;
 import model.Toy;
 
 import java.util.List;
+import java.util.Scanner;
 
 
 public class AdminServices{
 
 	public void addToy() {
-   
-		int id = adminServices.getPrizesList().size() + 1;
+		Scanner scanner = new Scanner(System.in);
+
+		int id = getPrizesList().size() + 1;
 
 		System.out.println("Enter Toy title: ");
 		String title = scanner.nextLine();
@@ -26,7 +28,7 @@ public class AdminServices{
 			priority = scanner.nextLine();
 		} while (!priority.matches("[1-9]"));
 
-      DataServices.writeData(new Toy(id, title, Integer.parse(amount), Integer.parse(priorty)),true);
+      DataServices.writeData(new Toy(id, title, Integer.parseInt(amount), Integer.parseInt(priority)),true);
    }
 
    public List<Toy> getPrizesList() {
