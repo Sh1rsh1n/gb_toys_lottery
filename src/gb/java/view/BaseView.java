@@ -1,7 +1,9 @@
 package view;
 
+import services.AdminServices;
+
 public interface BaseView{
 
-    void action();
+    void action(AdminServices adminServices);
 }
 

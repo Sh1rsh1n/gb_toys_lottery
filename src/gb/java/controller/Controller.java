@@ -1,32 +1,29 @@
 package controller;
 
+import services.AdminServices;
 import view.BaseView;
 
 public class Controller {
 
+    private AdminServices adminServices;
+
     public void appStart(BaseView[] view, String args) {
 
         if (args.equals("--help") || args.equals("-h")) {
-            System.out.println("\tAdmin menu write argument:\n\t--admin: prizes manager (need enter admin password)");
-            System.out.println("\tConsumer menu, write argument:\n\t--wp: \"want prize\"");
+            System.out.println("\tWork is admin mode, enter argument:\n\t-adm (enter admin password)");
+            System.out.println("\tWork is consumer mode, enter argument:\n\t-cns");
             return;
         }
 
-        if (args.equals("--admin")) {
-            view[0].action();
+        if (args.equals("-adm")) {
+            System.out.println("ADMIN MODE IS SELECTED");
+            view[0].action(adminServices);
             return;
         }
 
-        if (args.equals("--wp")) {
-            System.out.println("Action selected, \"Get prize\"\nYour prize is:");
-            view[1].action();
-            System.out.println("Congratulations!!!!");
-            return;
-        }
-
-        if (args.equals("--pl")) {
-            System.out.println("Action selected, \"List of all prizes\"");
-            view[1].action();
+        if (args.equals("-cns")) {
+            System.out.println("CONSUMER MODE IS SELECTED");
+            view[1].action(adminServices);
             return;
         }
 

@@ -6,6 +6,7 @@ import view.ConsumerView;
 
 public class MainApp {
     public static void main(String[] args) {
+
         try {
             BaseView[] view = {new AdminView(), new ConsumerView()};
             new Controller().appStart(view, args[0]);
