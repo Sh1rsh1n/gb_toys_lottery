@@ -1,6 +1,7 @@
-package services;
+package services.userServices;
 
 import model.Toy;
+import services.DataServices;
 
 import java.util.List;
 import java.util.Random;
@@ -16,23 +17,18 @@ public class ConsumerServices {
                 if (toy.getAmount() > 0) {
                     System.out.printf("your prize is %s", toy);
                     toy.setAmount(toy.getAmount() - 1);
-                    return;
                 } else {
                     getPrize();
                     toyList.remove(toy);
                     DataServices.reWriteData(toyList);
-                    return;
                 }
+                return;
             }
         }
     }
 
-    public void getPrizesList() {
-        List<Toy> toyList = DataServices.readData();
-
-        for (Toy toy : toyList) {
-            System.out.printf(" %s", toy);
-        }
+    public List<Toy> getPrizesList() {
+        return DataServices.readData();
     }
 
     private int priorityValue() {

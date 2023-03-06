@@ -1,34 +1,32 @@
 package controller;
 
-import services.AdminServices;
 import view.BaseView;
 
 public class Controller {
 
-    private AdminServices adminServices;
 
     public void appStart(BaseView[] view, String args) {
 
         if (args.equals("--help") || args.equals("-h")) {
-            System.out.println("\tWork is admin mode, enter argument:\n\t-adm (enter admin password)");
-            System.out.println("\tWork is consumer mode, enter argument:\n\t-cns");
+            System.out.println("\tДля работы в режиме администратора, введите аргумент:\n\t-adm (требуется пароль)");
+            System.out.println("\tДля работы в режиме потребителя, введите аргумент:\n\t-cns");
             return;
         }
 
         if (args.equals("-adm")) {
-            System.out.println("ADMIN MODE IS SELECTED");
-            view[0].action(adminServices);
+            System.out.println("Режим работы: Администратора");
+            view[0].action();
             return;
         }
 
         if (args.equals("-cns")) {
-            System.out.println("CONSUMER MODE IS SELECTED");
-            view[1].action(adminServices);
+            System.out.println("Режим работы: Потребителя");
+            view[1].action();
             return;
         }
 
-        System.out.println("============ Toys Lottery ============");
-        System.out.println("Call help, enter arguments: --help, -h");
-        System.out.println("======================================");
+        System.out.println("============ Лотерея игрушек ===============");
+        System.out.println("Вызов справки, введите аргумент: --help, -h");
+        System.out.println("============================================");
     }
 }

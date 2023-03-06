@@ -12,10 +12,10 @@ public class Toy implements Comparable<Toy> {
 
     private int priority;
 
-    public Toy(int id, String title, int amoiunt, int priority) {
+    public Toy(int id, String title, int amount, int priority) {
         this.id = id;
         this.title = title;
-        this.amount = amoiunt;
+        this.amount = amount;
         if (priority > 9 || priority < 1) {
             System.out.println("Некорректное значение параметра 'priority'.\nУстановлено значение по-умолчанию: 5");
             this.priority = 5;

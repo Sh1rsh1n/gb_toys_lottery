@@ -2,16 +2,13 @@ package services;
 
 import model.Toy;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataServices {
 
-    private final static String path = "src/gb/java/services/toys_lottery_list.txt";
+    private final static String path = "toys_lottery_list.txt";
 
     public static void writeData(Toy toy, boolean newLine) {
 
@@ -19,7 +16,7 @@ public class DataServices {
             writer.write(toy.getId() + ",");
             writer.write(toy.getTitle() + ",");
             writer.write(toy.getAmount() + ",");
-            writer.write(toy.getPriority()); 
+            writer.write(toy.getPriority() + "\n");
             writer.flush();
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -33,6 +30,13 @@ public class DataServices {
     }
 
     public static List<Toy> readData() {
+
+        try {
+            new File(path).createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         List<Toy> list = new ArrayList<>();
 
         try (BufferedReader bf = new BufferedReader(new FileReader(path))) {

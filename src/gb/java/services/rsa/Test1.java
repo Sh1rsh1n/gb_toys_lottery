@@ -1,4 +1,4 @@
-package services;
+package services.rsa;
 
 import javax.crypto.Cipher;
 import java.io.File;
@@ -11,7 +11,6 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import java.util.Scanner;
 
-import services.RSAUtil;
 
 public class Test1 {
     public static void main(String[] args) throws Exception {

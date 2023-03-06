@@ -1,31 +1,31 @@
-package services;
+package services.userServices;
 
 import model.Toy;
+import services.DataServices;
 
 import java.util.List;
 import java.util.Scanner;
-import services.Services;
 
 
-public class AdminServices implements Services {
+public class AdminServices {
 
 	public void addToy() {
 		Scanner scanner = new Scanner(System.in);
 
 		int id = getPrizesList().size() + 1;
 
-		System.out.println("Enter Toy title: ");
+		System.out.println("Введите название игрушки: ");
 		String title = scanner.nextLine();
 
 		String amount;
 		do {
-			System.out.println("Enter amount of toys: ");
+			System.out.println("Введите количество игрушек: ");
 			amount = scanner.nextLine();
 		} while (!amount.matches("\\d+"));
 
 		String priority;
 		do {
-			System.out.println("Enter priority of toys (1-9): ");
+			System.out.println("Введите шанс получения игрушки от 1 до 9: ");
 			priority = scanner.nextLine();
 		} while (!priority.matches("[1-9]"));
 
@@ -39,6 +39,7 @@ public class AdminServices implements Services {
    public boolean checkPassword(String password) {
       return password.matches("123456");
    }
+
 }
 
 

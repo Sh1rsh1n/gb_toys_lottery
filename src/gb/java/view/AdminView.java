@@ -1,52 +1,72 @@
 package view;
 
 import model.Toy;
-import services.AdminServices;
 import services.DataServices;
+import services.userServices.AdminServices;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class AdminView implements BaseView {
 
+    private AdminServices services;
+
+    public AdminView() {
+        services = new AdminServices();
+    }
 
     @Override
-    public void action(AdminServices adminServices) {
-        System.out.println("Enter password: ");
+    public void action() {
+        Scanner scanner = new Scanner(System.in);
 
-        String password = new Scanner(System.in).nextLine();
+        System.out.println("Введите пароль: ");
+        String password = scanner.nextLine();
 
-        while (adminServices.checkPassword(password)) {
-            Scanner scanner = new Scanner(System.in);
+        while (true) {
+
+            if (!services.checkPassword(password)) {
+                System.out.println("Некорректный пароль, повторите ввод.\n:>>> ");
+                password = scanner.nextLine();
+                continue;
+            }
+
             System.out.println("""
-                    Select action (enter number):
-                    1. Add toy to list
-                    2. Show toys list
-                    3. Change admin password
-                    0. Exit""");
+                    Выберите действие (введите нужное число):
+                    1. Добавить игрушки в список.
+                    2. Показать список всех игрушек.
+                    3. Смена пароля администратора.
+                    0. Выход из программы.""");
             String input = scanner.nextLine();
 
             while (true) {
                 if (input.equals("1")) {
 
-                    adminServices.addToy();
+                    services.addToy();
 
-                    System.out.println("Add toys more, enter \"1\", For exit, enter \"0\"");
+                    System.out.println("============================================");
+                    System.out.println("\tДобавить еще игрушку? \"1\".\n\tПросмотр списка игрушек, введите \"2\".\n\tДля выхода введите: \"0\"\n");
                     input = scanner.nextLine();
                     continue;
                 }
 
                 if (input.equals("2")) {
                     List<Toy> list = DataServices.readData();
-                    System.out.println("Toys list:");
+                    System.out.println("============================================");
+                    System.out.println("=========== Список игрушек =================");
+                    System.out.println("============================================");
                     for (Toy toy : list) {
-                        System.out.printf("\t%s\n", toy);
+                        System.out.printf("\tНазвание игрушки: %s, Количество: %d шт., Шанс получения: %d\n", toy.getTitle(), toy.getAmount(), (toy.getPriority()));
+                        System.out.println("============================================================================");
+
                     }
 
-                    System.out.println("Add toy, enter \"1\". For exit, enter \"0\"");
+                    System.out.println("Добавить еще игрушку? \"1\", Для выхода введите: \"0\"");
+                    input = scanner.nextLine();
+                    continue;
                 }
 
                 if (input.equals("3")) {
+                    // ToDo
                     continue;
                 }
 
@@ -54,15 +74,11 @@ public class AdminView implements BaseView {
                     scanner.close();
                     break;
                 } else {
-                    System.out.println("Incorrect input, try again.");
+                    System.out.println("Некорректное значение, повторите ввод.");
                 }
             }
-            scanner.close();
         }
-
     }
-
-
 }
 
 
