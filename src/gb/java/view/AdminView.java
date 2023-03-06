@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class AdminView implements BaseView {
 
-    private AdminServices services;
+    private final AdminServices services;
 
     public AdminView() {
         services = new AdminServices();

@@ -15,12 +15,16 @@ public class Controller {
 
         if (args.equals("-adm")) {
             System.out.println("Режим работы: Администратора");
+            System.out.println("============ Лотерея игрушек ===============");
+
             view[0].action();
             return;
         }
 
         if (args.equals("-cns")) {
-            System.out.println("Режим работы: Потребителя");
+            System.out.println("Режим работы: Потребитель");
+            System.out.println("============ Лотерея игрушек ===============");
+
             view[1].action();
             return;
         }
