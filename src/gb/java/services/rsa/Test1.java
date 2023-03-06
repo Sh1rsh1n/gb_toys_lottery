@@ -11,8 +11,15 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import java.util.Scanner;
 
+import services.RSAUtil;
+
 public class Test1 {
     public static void main(String[] args) throws Exception {
+
+      
+    RSAUtil.keysCreator();
+
+      /*
         KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
         generator.initialize(2048);
         KeyPair pair = generator.generateKeyPair();
@@ -52,5 +59,6 @@ public class Test1 {
 
         System.out.println(secretMessage);
         System.out.println(decryptedMessage);
+      */
     }
 }

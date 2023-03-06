@@ -4,6 +4,6 @@ import services.AdminServices;
 
 public interface BaseView{
 
-    void action(AdminServices adminServices);
+    void action(Services services);
 }
 

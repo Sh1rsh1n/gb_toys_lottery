@@ -4,9 +4,10 @@ import model.Toy;
 
 import java.util.List;
 import java.util.Scanner;
+import services.Services;
 
 
-public class AdminServices{
+public class AdminServices implements Services {
 
 	public void addToy() {
 		Scanner scanner = new Scanner(System.in);
@@ -36,7 +37,7 @@ public class AdminServices{
    }
 
    public boolean checkPassword(String password) {
-      return password.equals("123456");
+      return password.matches("123456");
    }
 }
 

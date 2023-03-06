@@ -9,18 +9,20 @@ public class ConsumerServices {
 
     public void getPrize() {
         List<Toy> toyList = DataServices.readData();
+        int value = priorityValue();
 
         for (Toy toy : toyList) {
-            if (toy.getPriority() == priorityValue()) {
+            if (toy.getPriority() == value) {
                 if (toy.getAmount() > 0) {
                     System.out.printf("your prize is %s", toy);
                     toy.setAmount(toy.getAmount() - 1);
+                    return;
                 } else {
                     getPrize();
                     toyList.remove(toy);
                     DataServices.reWriteData(toyList);
+                    return;
                 }
-                return;
             }
         }
     }
@@ -29,7 +31,7 @@ public class ConsumerServices {
         List<Toy> toyList = DataServices.readData();
 
         for (Toy toy : toyList) {
-            System.out.printf("your prize is %s", toy);
+            System.out.printf(" %s", toy);
         }
     }
 

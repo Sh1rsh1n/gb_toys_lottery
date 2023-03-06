@@ -7,12 +7,13 @@ import java.security.*;
 
 public class RSAUtil {
 
-    private final static String PUBLIC_KEY = "public.key";
-    private final static String PRIVATE_KEY = "private.key";
+    private final static String PUBLIC_KEY = "src/gb/java/services/public.key";
+    private final static String PRIVATE_KEY = "src/gb/java/services/private.key";
 
-    public void keysGen() {
+    public static void keysCreator() {
         try (FileOutputStream fosPublic = new FileOutputStream(PUBLIC_KEY);
             FileOutputStream fosPrivate = new FileOutputStream(PRIVATE_KEY)){
+          
             KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
             generator.initialize(1024);
             KeyPair pair = generator.generateKeyPair();
@@ -22,12 +23,16 @@ public class RSAUtil {
 
             fosPublic.write(publicKey.getEncoded());
             fosPrivate.write(privateKey.getEncoded());
+          
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-
-
     }
+
+    //public void file
+
+
+  
 }

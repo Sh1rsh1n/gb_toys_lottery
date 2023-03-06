@@ -13,9 +13,6 @@ public class DataServices {
 
     private final static String path = "src/gb/java/services/toys_lottery_list.txt";
 
-    /*
-     метод записывает данные в файл
-      */
     public static void writeData(Toy toy, boolean newLine) {
 
         try (FileWriter writer = new FileWriter(path, newLine)) {
