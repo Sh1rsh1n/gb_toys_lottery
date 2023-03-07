@@ -1,69 +1,92 @@
 package view;
 
 import model.Toy;
-import services.AdminServices;
 import services.DataServices;
+import services.userServices.AdminServices;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class AdminView implements BaseView {
+/*
+класс, отображение интерфейса для работы в режиме администратора
+обработка запросов и данных из консоли
+*/
+public class AdminView extends BaseView {
 
-	private final AdminServices adminServices;
+    private final AdminServices services;
 
-	public AdminView() {
-		this.adminServices = new AdminServices();
-	}
+    public AdminView() {
+        services = new AdminServices();
+    }
 
-	@Override
-	public void action() {
-		System.out.println("Enter password: ");
-		Scanner scanner = new Scanner(System.in);
-		String password = scanner.nextLine();
+    @Override
+    public void action() {
+        Scanner scanner = new Scanner(System.in);
 
-		while (adminServices.checkPassword(password)) {
-			System.out.println("""
-					Select action (enter number):
-					1. Add toy to list
-					2. Show toys list
-					3. Change admin password
-					0. Exit""");
-			String input = scanner.nextLine();
+        System.out.println("Введите пароль: ");
+        String password = scanner.nextLine();
 
-			while(true) {
-				if (input.equals("1")) {
-				
-				adminServices.addToy();
+        while (true) {
 
-				System.out.println("Add toys more, enter \"1\", For exit, enter \"0\"");
-				input = scanner.nextLine();
-				continue;
-				}
+            if (!services.checkPassword(password)) {
+                System.out.println("Некорректный пароль, повторите ввод.\n:>>> ");
+                password = scanner.nextLine();
+                continue;
+            }
 
-				if (input.equals("2")) {
-					List<Toy> list = DataServices.readData();
-					System.out.println("Toys list:");
-					for (Toy toy: list) {
-						System.out.printf("\t%s\n", toy);
-					}
-					
-					System.out.println("Add toy, enter \"1\". For exit, enter \"0\"");
-				}
+            System.out.println("""
+                    Выберите действие (введите нужное число):
+                    1. Добавить игрушки в список.
+                    2. Показать список всех игрушек.
+                    3. Добавить вопрос для викторины.
+                    4. Показать список всех вопросов викторины.
+                    0. Выход из программы.""");
+            String input = scanner.nextLine();
 
-				if (input.equals("3")) {
+            while (true) {
+                if (input.equals("1")) {
+                    services.addToy();
+                    input = retryAsk();
+                    continue;
+                }
 
-				}
+                if (input.equals("2")) {
+                    showToysList();
+                    input = retryAsk();
+                    continue;
+                }
 
-				if (input.equals("0")) {
-					break;
-				}
-			}	
-		}
+                if (input.equals("3")) {
+                    services.addQuestion();
+                    input = retryAsk();
+                    continue;
+                }
 
-		scanner.close();
-	}
+                if (input.equals("4")) {
+                    services.getQuestionList();
+                    input = retryAsk();
+                    continue;
+                }
 
+                if (input.equals("0")) {
+                    return;
+                } else {
+                    System.out.println("Некорректное значение, повторите ввод.");
+                }
+            }
+        }
+    }
 
+    private String retryAsk() {
+        System.out.println("============================================");
+        System.out.println("""
+                \tДобавить еще игрушку, введите: "1"
+                \tПросмотр списка игрушек, введите: "2"
+                \tДобавить еще вопрос викторины, введите: "3"
+                \tПоказать список вопросов викторины, введите: "4"
+                \tДля выхода введите: "0\"""");
+        return new Scanner(System.in).nextLine();
+    }
 }
 
 

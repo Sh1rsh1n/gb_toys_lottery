@@ -2,36 +2,38 @@ package controller;
 
 import view.BaseView;
 
+/*
+      класс, обрабатывает запросы пользователя из консоли
+*/
 public class Controller {
+
 
     public void appStart(BaseView[] view, String args) {
 
         if (args.equals("--help") || args.equals("-h")) {
-            System.out.println("\tAdmin menu write argument:\n\t--admin: prizes manager (need enter admin password)");
-            System.out.println("\tConsumer menu, write argument:\n\t--wp: \"want prize\"");
+            System.out.println("\tДля работы в режиме администратора, введите аргумент:\n\t-adm (требуется пароль)");
+            System.out.println("\tДля работы в режиме потребителя, введите аргумент:\n\t-cns");
             return;
         }
 
-        if (args.equals("--admin")) {
+        if (args.equals("adm")) {
+            System.out.println("Режим работы: Администратора");
+            System.out.println("============ Лотерея игрушек ===============");
+
             view[0].action();
             return;
         }
 
-        if (args.equals("--wp")) {
-            System.out.println("Action selected, \"Get prize\"\nYour prize is:");
-            view[1].action();
-            System.out.println("Congratulations!!!!");
-            return;
-        }
+        if (args.equals("cns")) {
+            System.out.println("Режим работы: Потребитель");
+            System.out.println("============ Лотерея игрушек ===============");
 
-        if (args.equals("--pl")) {
-            System.out.println("Action selected, \"List of all prizes\"");
             view[1].action();
             return;
         }
 
-        System.out.println("============ Toys Lottery ============");
-        System.out.println("Call help, enter arguments: --help, -h");
-        System.out.println("======================================");
+        System.out.println("============ Лотерея игрушек ===============");
+        System.out.println("Вызов справки, введите аргумент: --help, -h");
+        System.out.println("============================================");
     }
 }
