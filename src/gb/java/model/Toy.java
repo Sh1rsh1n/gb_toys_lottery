@@ -2,6 +2,12 @@ package model;
 
 import java.util.Objects;
 
+/*
+    @id - уникальный идентификатор игрушки
+    @title - название игрушки
+    @amount - количество игрушек
+    @priority - приоритет/шанс выпадения игрушки
+*/
 public class Toy implements Comparable<Toy> {
 
     private int id;

@@ -1,25 +1,25 @@
 package model;
 
+/*
+    @id - уникальный идентификатор вопроса
+    @body - тело вопроса(обычный текст)
+    @listAnswer - список вариантов ответов
+    @trueAnswer - номер правильного ответа
+*/
 public class Question {
 
     private int id;
 
     private String body;
 
-    private String firstAnswer;
-
-    private String secondAnswer;
-
-    private String thirdAnswer;
+    private List<String> listAnswer;
 
     private int trueAnswer;
 
-    public Question(int id, String body, String firstAnswer, String secondAnswer, String thirdAnswer, int trueAnswer) {
+    public Question(int id, String body, int trueAnswer) {
         this.id = id;
         this.body = body;
-        this.firstAnswer = firstAnswer;
-        this.secondAnswer = secondAnswer;
-        this.thirdAnswer = thirdAnswer;
+        listAnswer = new ArrayList();
         this.trueAnswer = trueAnswer;
     }
 
@@ -31,16 +31,8 @@ public class Question {
         return body;
     }
 
-    public String getFirstAnswer() {
-        return firstAnswer;
-    }
-
-    public String getSecondAnswer() {
-        return secondAnswer;
-    }
-
-    public String getThirdAnswer() {
-        return thirdAnswer;
+    public getListAnswer() {
+        return listAnswer;
     }
 
     public int getTrueAnswer() {

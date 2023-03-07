@@ -7,6 +7,10 @@ import services.userServices.AdminServices;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+класс, отображение интерфейса для работы в режиме администратора
+обработка запросов и данных из консоли
+*/
 public class AdminView implements BaseView {
 
     private final AdminServices services;

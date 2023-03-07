@@ -6,6 +6,10 @@ import services.userServices.ConsumerServices;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+класс, отображение интерфейса для работы в режиме потребителя
+обработка запросов и данных из консоли
+*/
 public class ConsumerView implements BaseView {
 
     private final ConsumerServices services;

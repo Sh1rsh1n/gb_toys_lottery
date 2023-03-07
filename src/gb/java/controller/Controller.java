@@ -2,6 +2,9 @@ package controller;
 
 import view.BaseView;
 
+/*
+      класс, обрабатывает запросы пользователя из консоли
+*/
 public class Controller {
 
 
