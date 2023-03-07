@@ -16,7 +16,7 @@ public class Controller {
             return;
         }
 
-        if (args.equals("-adm")) {
+        if (args.equals("adm")) {
             System.out.println("Режим работы: Администратора");
             System.out.println("============ Лотерея игрушек ===============");
 
@@ -24,7 +24,7 @@ public class Controller {
             return;
         }
 
-        if (args.equals("-cns")) {
+        if (args.equals("cns")) {
             System.out.println("Режим работы: Потребитель");
             System.out.println("============ Лотерея игрушек ===============");
 

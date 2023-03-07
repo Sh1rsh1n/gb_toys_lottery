@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
     @id - уникальный идентификатор вопроса
     @body - тело вопроса(обычный текст)
@@ -31,11 +34,23 @@ public class Question {
         return body;
     }
 
-    public getListAnswer() {
+    public List<String> getListAnswer() {
         return listAnswer;
     }
 
     public int getTrueAnswer() {
         return trueAnswer;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public void setTrueAnswer(int trueAnswer) {
+        this.trueAnswer = trueAnswer;
     }
 }

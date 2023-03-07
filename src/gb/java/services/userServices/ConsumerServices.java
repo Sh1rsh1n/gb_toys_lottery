@@ -3,11 +3,6 @@ package services.userServices;
 import model.Question;
 import model.Toy;
 import services.DataServices;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -16,22 +11,16 @@ import java.util.Random;
 */
 public class ConsumerServices {
 
-    private final static String path = "question.txt";
-
-    /*
-        
-    */
-    public Toy getPrize() {
+    public String getPrize() {
         List<Toy> toyList = DataServices.readData();
         int value = priorityValue();
-        System.out.println(toyList);
 
         for (Toy toy : toyList) {
             if (toy.getPriority() == value) {
                 if (toy.getAmount() > 0) {
                     toy.setAmount(toy.getAmount() - 1);
                     DataServices.reWriteData(toyList);
-                    return toy;
+                    return toy.getTitle();
                 } else {
                     getPrize();
                     toyList.remove(toy);
@@ -39,6 +28,7 @@ public class ConsumerServices {
                 }
             }
         }
+        return getPrize();
     }
     
     /*
