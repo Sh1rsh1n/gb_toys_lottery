@@ -46,7 +46,8 @@ public class ConsumerServices {
     }
 
     /*
-        
+        генерация рандомного значения, для получения приза(игрушки)
+        чем меньше значение, тем больше шанс получить приз.
     */
     private int priorityValue() {
         int seed = new Random().nextInt(9) + 1;
